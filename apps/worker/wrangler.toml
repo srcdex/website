@@ -1,5 +1,6 @@
-# TODO: set account_id before deploying.
-# account_id = ""
+# cspell:words sass
+# Deployed by Cloudflare Workers Builds on push; the account
+# comes from the build environment.
 name = "srcdex-website"
 main = "src/index.ts"
 # Pinned to the workerd shipped by @cloudflare/vitest-pool-workers'
@@ -16,8 +17,12 @@ compatibility_flags = [
   "enable_nodejs_process_v2",
 ]
 
-# TODO: route srcdex.dev/* on the srcdex.dev zone once the
-# go-get-import wiring lands.
+# srcdex.dev is temporarily linked to this worker as a
+# dashboard-managed custom domain; the domain's final home is
+# apptly's sass-dispatcher with go-get-import mounted, so it is
+# not declared here. workers.dev is the worker's own address.
+workers_dev = true
+preview_urls = true
 
 [dev]
 ip = "0.0.0.0"
