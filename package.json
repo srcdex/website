@@ -11,7 +11,7 @@
     "cf:deploy": "pnpm -r --workspace-concurrency=1 run cf:deploy",
     "cf:preview": "pnpm -r --workspace-concurrency=1 run cf:preview",
     "clean": "pnpm -r clean && rimraf node_modules",
-    "cspell": "cspell --config internal/build/cspell.json --gitignore --no-progress '**'",
+    "cspell": "cspell --config internal/build/cspell.json --dot --gitignore --no-progress '**'",
     "dev": "pnpm --filter @srcdex/website-worker dev",
     "dev:prepare": "pnpm -r dev:prepare",
     "lint": "run-s lint:root cspell lint:_packages",

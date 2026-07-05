@@ -3,7 +3,10 @@
   "language": "en-GB",
   "ignorePaths": [
     "**/.claude/**/memory",
-    "**/pnpm-lock.yaml"
+    "**/.claude/settings.local.json",
+    "**/.git",
+    "**/pnpm-lock.yaml",
+    "**/.srclight"
   ],
   "words": [
     "amery",
@@ -15,6 +18,7 @@
     "poupe",
     "prepack",
     "srcdex",
+    "srclight",
     "vitest",
     "workerd",
     "wrangler"

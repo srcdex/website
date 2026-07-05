@@ -16,6 +16,7 @@ coverage
 .DS_Store
 .fleet
 .idea
+.srclight
 .tmp
 
 # Local env files

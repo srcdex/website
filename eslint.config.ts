@@ -4,6 +4,7 @@ const config: Config[] = defineConfig(
   {
     ignores: [
       '.claude/**/memory',
+      '.srclight',
       '.tmp',
       '**/coverage',
     ],
