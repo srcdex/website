@@ -1,0 +1,49 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "srcdex.dev vanity-import dispatcher monorepo",
+  "author": "Alejandro Mery <amery@apptly.co>",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "build": "pnpm -r build",
+    "cf:deploy": "pnpm -r --workspace-concurrency=1 run cf:deploy",
+    "cf:preview": "pnpm -r --workspace-concurrency=1 run cf:preview",
+    "clean": "pnpm -r clean && rimraf node_modules",
+    "cspell": "cspell --config internal/build/cspell.json --gitignore --no-progress '**'",
+    "dev": "pnpm --filter @srcdex/website-worker dev",
+    "dev:prepare": "pnpm -r dev:prepare",
+    "lint": "run-s lint:root cspell lint:_packages",
+    "lint:_packages": "pnpm -r lint",
+    "lint:check": "run-s lint:root:check cspell lint:check:_packages",
+    "lint:check:_packages": "pnpm -r lint:check",
+    "lint:root": "eslint --fix --ignore-pattern 'apps/*' --ignore-pattern 'packages/*' .",
+    "lint:root:check": "eslint --ignore-pattern 'apps/*' --ignore-pattern 'packages/*' .",
+    "precommit": "run-s dev:prepare lint type-check build test test:compat",
+    "prepack": "run-s lint:root:check prepack:_packages",
+    "prepack:_packages": "pnpm -r prepack",
+    "test": "pnpm -r test",
+    "test:compat": "pnpm -r test:compat",
+    "test:coverage": "pnpm -r test:coverage",
+    "type-check": "run-s type-check:root type-check:_packages",
+    "type-check:_packages": "pnpm -r type-check",
+    "type-check:root": "tsc --noEmit -p tsconfig.tools.json"
+  },
+  "devDependencies": {
+    "@poupe/eslint-config": "^0.10.1",
+    "@types/node": "^20.19.43",
+    "cspell": "^10.0.1",
+    "eslint": "^9.39.4",
+    "jiti": "^2.7.0",
+    "npm-run-all2": "^9.0.2",
+    "pkg-pr-new": "~0.0.75",
+    "rimraf": "^6.1.3",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">= 20.20.1",
+    "pnpm": ">= 10.33.2"
+  },
+  "packageManager": "pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8"
+}

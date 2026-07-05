@@ -1,0 +1,22 @@
+{
+  "version": "0.2",
+  "language": "en-GB",
+  "ignorePaths": [
+    "**/.claude/**/memory",
+    "**/pnpm-lock.yaml"
+  ],
+  "words": [
+    "amery",
+    "apptly",
+    "darvaza",
+    "kagal",
+    "miniflare",
+    "obuild",
+    "poupe",
+    "prepack",
+    "srcdex",
+    "vitest",
+    "workerd",
+    "wrangler"
+  ]
+}

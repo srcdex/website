@@ -1,0 +1,23 @@
+# TODO: set account_id before deploying.
+# account_id = ""
+name = "srcdex-website"
+main = "src/index.ts"
+# Pinned to the workerd shipped by @cloudflare/vitest-pool-workers'
+# bundled wrangler; raise alongside that dep when it ships a newer
+# miniflare.
+compatibility_date = "2026-03-17"
+compatibility_flags = [
+  "nodejs_compat",
+  "enable_nodejs_tty_module",
+  "enable_nodejs_fs_module",
+  "enable_nodejs_http_modules",
+  "enable_nodejs_perf_hooks_module",
+  "enable_nodejs_v8_module",
+  "enable_nodejs_process_v2",
+]
+
+# TODO: route srcdex.dev/* on the srcdex.dev zone once the
+# go-get-import wiring lands.
+
+[dev]
+ip = "0.0.0.0"
