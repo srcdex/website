@@ -9,7 +9,23 @@
 /* global console, process */
 /* eslint unicorn/no-process-exit: "off" */
 
-import { VERSION } from '../../dist/index.mjs';
+import {
+  compileRule,
+  compileRules,
+  DEFAULT_FILE_EXTENSIONS,
+  escapeHTML,
+  goGetHTML,
+  goImportMeta,
+  goSourceMeta,
+  isFilePath,
+  isGitHubRepo,
+  matchPrefix,
+  matchRules,
+  newConsoleLogger,
+  newGoGetHostRouter,
+  newGoGetRouter,
+  VERSION,
+} from '../../dist/index.mjs';
 
 let failures = 0;
 
@@ -30,10 +46,40 @@ function checkString(name, value) {
   }
 }
 
+function checkFunction(name, value) {
+  if (typeof value === 'function') {
+    pass(name, '(function)');
+  } else {
+    fail(name, `expected function, got ${typeof value}`);
+  }
+}
+
+function checkArray(name, value) {
+  if (Array.isArray(value)) {
+    pass(name, `= [${value.join(', ')}]`);
+  } else {
+    fail(name, `expected array, got ${typeof value}`);
+  }
+}
+
 console.log(`Node ${process.version}`);
 console.log(`@srcdex/go-get-import v${VERSION}`);
 
 checkString('VERSION', VERSION);
+checkArray('DEFAULT_FILE_EXTENSIONS', DEFAULT_FILE_EXTENSIONS);
+checkFunction('compileRule', compileRule);
+checkFunction('compileRules', compileRules);
+checkFunction('escapeHTML', escapeHTML);
+checkFunction('goGetHTML', goGetHTML);
+checkFunction('goImportMeta', goImportMeta);
+checkFunction('goSourceMeta', goSourceMeta);
+checkFunction('isFilePath', isFilePath);
+checkFunction('isGitHubRepo', isGitHubRepo);
+checkFunction('matchPrefix', matchPrefix);
+checkFunction('matchRules', matchRules);
+checkFunction('newConsoleLogger', newConsoleLogger);
+checkFunction('newGoGetHostRouter', newGoGetHostRouter);
+checkFunction('newGoGetRouter', newGoGetRouter);
 
 if (failures > 0) {
   console.error(`\n${failures} failure(s)`);
