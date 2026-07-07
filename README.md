@@ -3,7 +3,7 @@
 Slim Cloudflare Worker dispatcher for the srcdex.dev Go vanity-import
 domain, plus the reusable middleware behind it.
 
-- `packages/go-get-import` — [`@srcdex/go-get-import`](packages/go-get-import),
+- [`@srcdex/go-get-import`](packages/@srcdex-go-get-import) —
   Cloudflare Workers middleware for Go vanity-import domains: answers
   `?go-get=1` with `go-import`/`go-source` meta tags, redirects file
   references (`.go`, `.md`) to the repository blob view, and everything
