@@ -1,9 +1,14 @@
-import { type Config, defineConfig } from '@poupe/eslint-config';
+import {
+  type Config,
+  defineConfig,
+  withAbbreviations,
+} from '@poupe/eslint-config';
 
 const config: Config[] = defineConfig(
   {
-    ignores: ['coverage'],
+    ignores: ['.wrangler', 'coverage'],
   },
+  withAbbreviations(['ctx']),
   {
     languageOptions: {
       parserOptions: {

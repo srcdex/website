@@ -23,6 +23,9 @@
     "type-check:tests": "tsc --noEmit -p tsconfig.tests.json",
     "type-check:tools": "tsc --noEmit -p tsconfig.tools.json"
   },
+  "dependencies": {
+    "@srcdex/go-get-import": "workspace:^"
+  },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.13.5",
     "@cloudflare/workers-types": "^4.20260702.1",

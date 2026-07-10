@@ -37,6 +37,10 @@ importers:
         version: 6.0.3
 
   apps/worker:
+    dependencies:
+      '@srcdex/go-get-import':
+        specifier: workspace:^
+        version: link:../../packages/@srcdex-go-get-import
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: ^0.13.5
