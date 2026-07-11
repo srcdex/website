@@ -187,6 +187,29 @@ export interface GoGetImportSettings {
   readonly resolve?: boolean
 }
 
+/**
+ * Settings for the host router ({@link GoGetHostRules} via
+ * `newGoGetHostRouter`), adding the host-selection knob the
+ * path router has no use for.
+ */
+export interface GoGetHostSettings extends GoGetImportSettings {
+  /**
+   * Request header naming the hostname to route as, in place of
+   * the request's own host: when set, the host router reads this
+   * header and, if the request carries it, selects the rule
+   * table — and so the import host — by its value. A development
+   * aid for reaching a table through a host that cannot present
+   * the real name, such as a workers.dev preview whose Host the
+   * platform pins to the TLS SNI. The caller owns the name and
+   * whether to set it; omit in production as a matter of
+   * hygiene, not safety — an override only reselects among the
+   * router's own tables (an unknown host still declines), and
+   * every table serves the same public meta document the real
+   * host would, so a forged header gains nothing.
+   */
+  readonly hostHeader?: string
+}
+
 /** Options for the path router. */
 export interface GoGetImportOptions extends GoGetImportSettings {
   /**

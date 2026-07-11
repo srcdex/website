@@ -260,9 +260,8 @@ consumers with bespoke needs: `compileRule`,
 
 ### Development aids
 
-Two opt-in settings help while building a rule table,
-both off by default and meant to stay off in
-production:
+Three opt-in settings help while building a rule table,
+all off by default and meant to stay off in production:
 
 - `resolve: true` makes the router answer `?resolve=1`
   with the JSON resolution of the URL —
@@ -279,6 +278,15 @@ production:
   hands that promise to `ctx.waitUntil`, so only the
   asynchronous tail runs after the response rather than
   before it.
+- `hostHeader` (host router only) names a request header
+  whose value overrides the routing host: when the
+  request carries it, the host router selects the rule
+  table — and so the import host — by that value instead
+  of the request's own hostname. It reaches a table
+  through a host that cannot present the real name, such
+  as a workers.dev preview whose Host the platform pins to
+  the TLS SNI. The caller owns the header name and whether
+  to set it.
 
 `newConsoleLogger(level, sink)` is a reference logger —
 `info` (the default) logs a concise path-to-repository

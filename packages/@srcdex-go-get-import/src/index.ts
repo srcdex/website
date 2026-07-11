@@ -12,6 +12,7 @@ export type {
   ExcludeRule,
   ExecutionContextLike,
   GoGetHostRules,
+  GoGetHostSettings,
   GoGetImportHandler,
   GoGetImportOptions,
   GoGetImportSettings,

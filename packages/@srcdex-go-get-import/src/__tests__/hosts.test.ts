@@ -129,6 +129,60 @@ describe('newGoGetHostRouter', () => {
       .toBe(`${SRCDEX_REPO}/blob/master/main.go`);
   });
 
+  describe('hostHeader override', () => {
+    const HEADER = 'X-Debug-Host';
+    const overriding = newGoGetHostRouter(
+      { 'srcdex.dev': srcdexRules },
+      { hostHeader: HEADER },
+    );
+
+    it('routes by the header value when present', async () => {
+      const got = overriding.fetch(
+        new Request('https://preview.example/?go-get=1', {
+          headers: { [HEADER]: 'srcdex.dev' },
+        }),
+      );
+      expect(got?.status).toBe(200);
+      expect(await got?.text())
+        .toContain('content="srcdex.dev git');
+    });
+
+    it('lowercases the header value to match table keys', () => {
+      const got = overriding.fetch(
+        new Request('https://preview.example/?go-get=1', {
+          headers: { [HEADER]: 'SrcDex.Dev' },
+        }),
+      );
+      expect(got?.status).toBe(200);
+    });
+
+    it('falls back to the URL host when the header is absent',
+      () => {
+        const got = overriding.fetch(
+          new Request('https://preview.example/?go-get=1'),
+        );
+        expect(got).toBeUndefined();
+      });
+
+    it('declines when the header names an unknown host', () => {
+      const got = overriding.fetch(
+        new Request('https://srcdex.dev/?go-get=1', {
+          headers: { [HEADER]: 'unknown.example' },
+        }),
+      );
+      expect(got).toBeUndefined();
+    });
+
+    it('ignores the header without the hostHeader setting', () => {
+      const got = router.fetch(
+        new Request('https://preview.example/?go-get=1', {
+          headers: { 'X-Debug-Host': 'srcdex.dev' },
+        }),
+      );
+      expect(got).toBeUndefined();
+    });
+  });
+
   it('forwards the execution context to the path router', () => {
     let waited: Promise<unknown> | undefined;
     const ctx: ExecutionContextLike = {
