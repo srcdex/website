@@ -17,15 +17,19 @@ function notFound(): Response {
   });
 }
 
-// Development aid, wired on for now: answers `?resolve=1` with
-// the JSON resolution and logs each request's path and repo.
-// Flip to `false` (or drive it from config) before this fronts
-// production.
+// Development aids, wired on for now. `resolve` answers
+// `?resolve=1` with the JSON resolution; the logger records each
+// request's path and repo; `hostHeader` lets the
+// `X-Srcdex-Debug-Host` header override the routing host — the
+// only way to reach the rules through a workers.dev preview,
+// whose Host the platform pins to the TLS SNI. Flip to `false`
+// before this fronts production.
 const debugResolver: boolean = true;
 
 const goGet = newGoGetHostRouter(hostRules, {
   resolve: debugResolver,
   logger: debugResolver ? newConsoleLogger('debug') : undefined,
+  hostHeader: debugResolver ? 'X-Srcdex-Debug-Host' : undefined,
 });
 
 const handler = {

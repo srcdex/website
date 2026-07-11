@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest';
 
 const SRCDEX_REPO = 'https://github.com/srcdex/srcdex';
 
-function fetchManual(url: string): Promise<Response> {
-  return SELF.fetch(url, { redirect: 'manual' });
+function fetchManual(url: string, init?: RequestInit): Promise<Response> {
+  return SELF.fetch(url, { redirect: 'manual', ...init });
 }
 
 describe('worker fetch (workerd pool)', () => {
@@ -43,6 +43,21 @@ describe('worker fetch (workerd pool)', () => {
 
     expect(response.status).toBe(404);
     expect(await response.text()).toBe('not found\n');
+  });
+
+  // The debug host header, also gated by `debugResolver`, routes
+  // a request as if it had arrived at the named host — the only
+  // way to reach the rules through a workers.dev preview.
+  it('routes via the X-Srcdex-Debug-Host override', async () => {
+    const response =
+      await fetchManual('https://preview.workers.dev/?go-get=1', {
+        headers: { 'X-Srcdex-Debug-Host': 'srcdex.dev' },
+      });
+
+    expect(response.status).toBe(200);
+    expect(await response.text()).toContain(
+      `<meta name="go-import" content="srcdex.dev git ${SRCDEX_REPO}">`,
+    );
   });
 
   // The worker wires the resolve dump on via `debugResolver`.
