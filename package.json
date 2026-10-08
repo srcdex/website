@@ -31,10 +31,10 @@
     "type-check:root": "tsc --noEmit -p tsconfig.tools.json"
   },
   "devDependencies": {
-    "@poupe/eslint-config": "^0.10.1",
+    "@poupe/eslint-config": "^0.10.2",
     "@types/node": "^20.19.43",
     "cspell": "^10.0.1",
-    "eslint": "^10.6.0",
+    "eslint": "^10.12.0",
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.2",
     "pkg-pr-new": "~0.0.75",
@@ -43,7 +43,7 @@
   },
   "pnpm": {
     "overrides": {
-      "eslint-plugin-tsdoc>@typescript-eslint/utils": "^8.62.0"
+      "eslint-plugin-tsdoc>@typescript-eslint/utils": "^8.71.1"
     }
   },
   "engines": {
