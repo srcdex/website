@@ -37,7 +37,7 @@
     "eslint": "^10.6.0",
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.2",
-    "pkg-pr-new": "~0.0.75",
+    "pkg-pr-new": "~0.0.91",
     "rimraf": "^6.1.3",
     "typescript": "^6.0.3"
   },

@@ -30,8 +30,8 @@ importers:
         specifier: ^9.0.2
         version: 9.0.2
       pkg-pr-new:
-        specifier: ~0.0.75
-        version: 0.0.75
+        specifier: ~0.0.91
+        version: 0.0.91
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
@@ -232,6 +232,7 @@ packages:
 
   '@cloudflare/vitest-pool-workers@0.13.5':
     resolution: {integrity: sha512-T9yRcJXbJOguWvwCv4NjjPt0iOwUorbuR1pkEPWhmRKWBmZJ9ag/WFrIxCjQ6ZIFkKprJR3y+nels4jRQVZNiA==}
+    deprecated: '@cloudflare/vitest-pool-workers has been renamed to @cloudflare/vitest-plugin. This package will not receive future updates.'
     peerDependencies:
       '@vitest/runner': ^4.1.0
       '@vitest/snapshot': ^4.1.0
@@ -2158,8 +2159,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  pkg-pr-new@0.0.75:
-    resolution: {integrity: sha512-u9mdErTewKSMsr+ceCt8VcNuNP0ro5AXiPXhUVApuEyqr2Zlvt+DdCFBcm+yGWN8mhOdZJ27meIDbnoZgfzpOw==}
+  pkg-pr-new@0.0.91:
+    resolution: {integrity: sha512-FQPmjspKRKYV4MlHQnun9snJqlYm6Yhmo12x1O3pgE2Akim/y/BZjMOppK//BFdh222WOj6WGqlmeZfrtUtfgQ==}
     hasBin: true
 
   pkg-types@2.3.1:
@@ -4605,7 +4606,7 @@ snapshots:
 
   pidtree@1.0.0: {}
 
-  pkg-pr-new@0.0.75: {}
+  pkg-pr-new@0.0.91: {}
 
   pkg-types@2.3.1:
     dependencies:
