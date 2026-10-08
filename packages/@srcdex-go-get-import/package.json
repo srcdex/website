@@ -70,7 +70,7 @@
     "eslint": "^10.6.0",
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.2",
-    "obuild": "^0.4.37",
+    "obuild": "^0.4.44",
     "publint": "^0.3.21",
     "rimraf": "^6.1.3",
     "typescript": "^6.0.3",
