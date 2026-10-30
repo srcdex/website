@@ -232,6 +232,7 @@ packages:
 
   '@cloudflare/vitest-pool-workers@0.13.5':
     resolution: {integrity: sha512-T9yRcJXbJOguWvwCv4NjjPt0iOwUorbuR1pkEPWhmRKWBmZJ9ag/WFrIxCjQ6ZIFkKprJR3y+nels4jRQVZNiA==}
+    deprecated: '@cloudflare/vitest-pool-workers has been renamed to @cloudflare/vitest-plugin. This package will not receive future updates.'
     peerDependencies:
       '@vitest/runner': ^4.1.0
       '@vitest/snapshot': ^4.1.0
